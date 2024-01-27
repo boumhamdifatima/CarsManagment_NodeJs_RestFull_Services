@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<style type="text/css">
+			#zoneModificationVehicule, #zoneSuppressionVehicule, #zoneListeVehicule{
+				display : none;
+			}
+			.centered-image {
+				display: block;
+				margin: auto;
+			}
+		</style>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+		</script>
+		<script type="text/javascript" src="script.js">
+        </script>
+		<title>Gestion des Véhicules</title>
+	</head>
+	<body class="container">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-8 offset-2 text-center">
+					<p>
+						<input class="btn btn-primary m-2" type="button" value="Nouveau Véhicule" onclick="creerVehicule();" />
+						<input class="btn btn-primary m-2" type="button" value="Modification de Véhicule" onclick="modifierVehicule();" />
+						<input class="btn btn-primary m-2" type="button" value="Suppression de Véhicule" onclick="supprimerVehicule();" />
+						<input class="btn btn-primary m-2" type="button" value="Liste Véhicules" onclick="listerVehicule();" />
+					</p>
+				</div>
+				
+			</div>			
+		
+		
+			<div id="zoneNouveauVehicule">
+				<form">
+					<div class="row mb-3">
+						<h1 class="col-md-8 offset-2">Nouveau véhicule</h1>
+					</div>
+					
+					<div class="row mb-3">
+						<div class="col-md-8 offset-2">
+							<label class="col-md-2 fs-3">Id</label>
+							<input class="col-md-4" id="txtIdN" type="text"/>
+						</div>					
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Marque</label>
+								<input class="col-md-4" id="txtMarqueN" type="text" />
+						</div>					
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-8 offset-2">
+							<label class="col-md-2 fs-3">Modèle</label>
+							<input class="col-md-4" id="txtModeleN" type="text" />
+						</div>					
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-8 offset-2">
+							<label class="col-md-2 fs-3">Année</label>
+							<input class="col-md-4" id="txtAnneeN" type="text" />
+						</div>					
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-8 offset-2">
+							<label class="col-md-2 fs-3">Couleur</label>
+							<input class="col-md-4" id="txtCouleurN" type="text" />
+						</div>					
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-8 offset-2">
+							<label class="col-md-2 fs-3">Image</label>
+							<input class="col-md-4" id="txtImageN" type="text" />
+						</div>					
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-6 text-end">					
+							<input class="btn btn-primary me-5"  type="button" value="Enregistrer" onclick="enregistrer();" />
+							<input class="btn btn-secondary" type="reset" value="Annuler" />
+						</div>					
+					</div>				
+				</form>
+			</div>
+			<div id="zoneModificationVehicule">
+				<form>
+					<div class="row mb-3">
+						<h1 class="col-md-8 offset-2">Modification de véhicule</h1>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-8 offset-2 bg-primary-subtle p-2 text-center">
+							<label class="fw-bold">ID du véhicule</label>
+							<input id="txtIdM" type="text" />
+							<input class="btn btn-secondary"  type="button" value="Rechercher" onclick="rechercherModification();" />
+						</div>
+					</div>
+					<fieldset>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<legend class="fs-2">Modification souhaitée</legend>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Marque</label>
+								<input class="col-md-4" id="txtMarqueM" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Modèle</label>
+								<input class="col-md-4" id="txtModeleM" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Année</label>
+								<input class="col-md-4" id="txtAnneeM" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Couleur</label>
+								<input class="col-md-4" id="txtCouleurM" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Image</label>
+								<input class="col-md-4" id="txtImageM" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-6 text-end">					
+								<input class="btn btn-primary me-5"  type="button" value="Modifier" onclick="modifier();" />
+								<input class="btn btn-secondary"  type="reset" value="Annuler" />
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<div id="zoneSuppressionVehicule">
+				<form>
+					<div class="row mb-3">
+						<h1 class="col-md-8 offset-2">Suppression de véhicule</h1>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md-8 offset-2 bg-primary-subtle p-2 text-center">
+							<label class="fw-bold">ID du véhicule</label>
+							<input id="txtIdS" type="text" />
+							<input class="btn btn-secondary"  type="button" value="Rechercher" onclick="rechercherSuppression();" />
+						</div>
+					</div>
+					<fieldset>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<legend class="fs-2">Véhicule à supprimer</legend>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Marque</label>
+								<input class="col-md-4" id="txtMarqueS" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Modèle</label>
+								<input class="col-md-4" id="txtModeleS" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Année</label>
+								<input id="txtAnneeS" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Couleur</label>
+								<input class="col-md-4" id="txtCouleurS" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-8 offset-2">
+								<label class="col-md-2 fs-3">Image</label>
+								<input class="col-md-4" id="txtImageS" type="text" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-6 text-end">					
+								<input class="btn btn-primary me-5"  type="button" value="Supprimer" onclick="supprimer();" />
+								<input  class="btn btn-secondary" type="reset" value="Annuler" />
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<div id="zoneListeVehicule">
+				<div class="row">
+					<div class="col-md-10 offset-1">
+						<p>
+							<h1>Liste de véhicules</h1>
+						</p>
+						<table class="table">
+							<thead>
+								<tr class="text-center">
+									<th class="col-2">Id</th>
+									<th class="col-1">Marque</th>
+									<th class="col-1">Modèle</th>
+									<th class="col-1">Année</th>
+									<th class="col-1">Couleur</th>
+									<th class="col-4">Image</th>
+								</tr>
+							</thead>
+		
+							<tbody id="idCorpsTableau">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
